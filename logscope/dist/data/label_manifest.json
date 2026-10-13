@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "retrieved_on": "2026-10-12",
+  "profiles": [
+    {
+      "id": "HDFS",
+      "dataset": "HDFS",
+      "raw_path": "HDFS_2k.log",
+      "labels_path": "HDFS_2k_labels.csv",
+      "title": "HDFS \u00b7 2,000 official sample logs + block labels",
+      "input_sha256": "6fe25449e79d75e35bb223ead9729fa02c00b7abb23e4e8ec0f3bb2addec6e3a",
+      "labels_sha256": "77733c09f3f54bcd884b8765913807af59acc79e6119bd389de3fcd01962773d",
+      "rows": 2000,
+      "label_kind": "official_block_labels",
+      "note": "Official block-session labels mapped to sampled records, then any-positive time-window labels. Sparse time-window evaluation is not the paper\u2019s full block-session benchmark.",
+      "sources": [
+        {
+          "url": "https://github.com/logpai/loglizer/blob/master/data/HDFS/anomaly_label.csv",
+          "sha256": "78de297d3862e37295951484028c1749bee4e3f06c2d563242c9d1999ff1abb0"
+        }
+      ]
+    },
+    {
+      "id": "OpenStack_2k",
+      "dataset": "OpenStack",
+      "raw_path": "OpenStack_2k.log",
+      "labels_path": "OpenStack_2k_labels.csv",
+      "title": "OpenStack \u00b7 original 2k normal-only sample",
+      "input_sha256": "6ea7e03648d7bd6231cae427cb509073a9fbc71f49ded5301673495902edab17",
+      "labels_sha256": "e50256cd460a362ac8fe64463b42cc8aeb2f668694b89dfcde8a9bf479a21255",
+      "rows": 2000,
+      "label_kind": "normal_collection_membership",
+      "note": "Every sampled line exactly matches the official normal1 collection. No positive examples: recall/F1 are unavailable; use the annotated failure-run preset for two-class evaluation.",
+      "sources": [
+        {
+          "url": "https://zenodo.org/records/8196385/files/OpenStack.tar.gz?download=1",
+          "files": [
+            "anomaly_labels.txt",
+            "openstack_abnormal.log",
+            "openstack_normal1.log"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "OpenStack",
+      "dataset": "OpenStack",
+      "raw_path": "OpenStack_labeled.log",
+      "labels_path": "OpenStack_labeled_labels.csv",
+      "title": "OpenStack \u00b7 18,434 logs from annotated failure run",
+      "input_sha256": "7ab718fbb2f2b804893955cecf37ad9533cfa0efaf5b03009474d5bb019b6af4",
+      "labels_sha256": "c05af3832686bf1b1e1d7406ef77dcf0c17acc61005193193cd6ca2fdd58d412",
+      "rows": 18434,
+      "label_kind": "derived_vm_association",
+      "note": "Association evaluation: a line is positive iff it contains one of the 4 officially annotated anomalous VM UUIDs; all other lines are negative for this association target. This is NOT independently verified line-level fault ground truth, and can miss faults without a VM identifier. Any-positive labels are aggregated per time window.",
+      "sources": [
+        {
+          "url": "https://zenodo.org/records/8196385/files/OpenStack.tar.gz?download=1",
+          "files": [
+            "anomaly_labels.txt",
+            "openstack_abnormal.log",
+            "openstack_normal1.log"
+          ]
+        }
+      ]
+    }
+  ]
+}

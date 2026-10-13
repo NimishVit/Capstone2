@@ -1,0 +1,1 @@
+{"private":true,"scripts":{"test:ui":"node tests/ui.cjs"},"devDependencies":{"fake-indexeddb":"6.2.2","jsdom":"26.1.0"}}
